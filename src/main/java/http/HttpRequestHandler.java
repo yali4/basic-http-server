@@ -78,16 +78,16 @@ public class HttpRequestHandler extends Thread {
 
             } catch (Exception e) {
 
-                URL indexFile = getClass().getResource("/" + this.errorPage);
-                Path indexFilePath = new File(indexFile.getFile()).toPath();
+                URL errorFile = getClass().getResource("/" + this.errorPage);
+                Path errorFilePath = new File(errorFile.getFile()).toPath();
 
-                String responseBody = readFile(indexFile.getFile());
+                String responseBody = readFile(errorFile.getFile());
 
                 responseBodyBytes = responseBody.getBytes();
 
                 responseHeader.add("HTTP/1.0 400 Bad Request");
                 responseHeader.add("Server: Java/SocketServer");
-                responseHeader.add(String.format("Content-Type: %s", Files.probeContentType(indexFilePath)));
+                responseHeader.add(String.format("Content-Type: %s", Files.probeContentType(errorFilePath)));
                 responseHeader.add(String.format("Content-Length: %d", responseBodyBytes.length));
 
             }
