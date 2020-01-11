@@ -53,7 +53,7 @@ public class HttpRequestHandler extends Thread {
                 List<HttpHeader> headers = parser.getHeaders();
 
                 System.out.println("=====================");
-                System.out.println("Request was received:");
+                System.out.println(String.format("Request was received: %s", parser.getRequestFile()));
                 System.out.println("=====================");
                 for (HttpHeader header : headers) {
                     System.out.println(String.format("%s: %s", header.getKey(), header.getValue()));
